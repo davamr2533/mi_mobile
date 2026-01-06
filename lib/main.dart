@@ -111,8 +111,8 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MenuButton(
-                  icon: Icons.track_changes,
-                  label: 'VISI MISI',
+                  icon: Icons.business,
+                  label: 'PROFIL PRODI',
                   onPressed: () {
 
                   },
@@ -121,8 +121,8 @@ class HomePage extends StatelessWidget {
                 SizedBox(width: 20),
 
                 MenuButton(
-                  icon: Icons.computer,
-                  label: 'KONSENTRASI',
+                  icon: Icons.people,
+                  label: 'PROFIL DOSEN',
                   onPressed: () {
 
                   },
@@ -267,8 +267,8 @@ class MenuButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         elevation: 0,
-        minimumSize: const Size(150, 80),
-        maximumSize: const Size(150, 80),
+        minimumSize: const Size(155, 80),
+        maximumSize: const Size(155, 80),
         backgroundColor: Colors.amber,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
