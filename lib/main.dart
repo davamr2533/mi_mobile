@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mi_mobile/pages/konsentrasi.dart';
+import 'package:mi_mobile/pages/profil_prodi.dart';
+import 'package:mi_mobile/pages/visi_misi.dart';
 
 
 void main() {
@@ -88,7 +91,12 @@ class HomePage extends StatelessWidget {
                   icon: Icons.track_changes,
                   label: 'VISI MISI',
                   onPressed: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VisiMisiPage()
+                        )
+                    );
                   },
                 ),
 
@@ -98,7 +106,12 @@ class HomePage extends StatelessWidget {
                   icon: Icons.computer,
                   label: 'KONSENTRASI',
                   onPressed: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => KonsentrasiPage()
+                        )
+                    );
                   },
                 ),
               ],
@@ -114,7 +127,12 @@ class HomePage extends StatelessWidget {
                   icon: Icons.business,
                   label: 'PROFIL PRODI',
                   onPressed: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfilProdiPage()
+                        )
+                    );
                   },
                 ),
 

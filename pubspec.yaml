@@ -63,6 +63,9 @@ flutter:
   assets:
      - assets/images/amikom_putih.png
      - assets/images/akreditasi_unggul.png
+     - assets/images/mobile.png
+     - assets/images/web.png
+     - assets/images/multimedia.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
