@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mi_mobile/pages/konsentrasi.dart';
+import 'package:mi_mobile/pages/profil_dosen.dart';
 import 'package:mi_mobile/pages/profil_prodi.dart';
 import 'package:mi_mobile/pages/visi_misi.dart';
 
@@ -172,7 +173,12 @@ class HomePage extends StatelessWidget {
                   icon: Icons.people,
                   label: 'PROFIL DOSEN',
                   onPressed: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfilDosenPage()
+                        )
+                    );
                   },
                 ),
               ],

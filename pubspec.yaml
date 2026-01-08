@@ -66,6 +66,9 @@ flutter:
      - assets/images/mobile.png
      - assets/images/web.png
      - assets/images/multimedia.png
+     - assets/images/1_alan.png
+     - assets/images/2_farida.png
+     - assets/images/3_dewi.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
