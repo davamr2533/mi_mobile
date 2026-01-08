@@ -65,11 +65,41 @@ class HomePage extends StatelessWidget {
           ],
         ),
         actions: [
-          IconButton(
+          PopupMenuButton<String>(
             icon: const Icon(Icons.more_vert, color: Colors.white),
-            onPressed: () {
+            color: const Color(0xFFFCC740),
+            onSelected: (value) {
+              if (value == 'login') {
 
+              } else if (value == 'logout') {
+
+
+              }
             },
+            itemBuilder: (context) => [
+
+              PopupMenuItem(
+                value: 'login',
+                child: Row(
+                  children: [
+                    Icon(Icons.login, size: 18),
+                    SizedBox(width: 8),
+                    Text('Log in'),
+                  ],
+                ),
+              ),
+
+              PopupMenuItem(
+                value: 'logout',
+                child: Row(
+                  children: [
+                    Icon(Icons.logout, size: 18),
+                    SizedBox(width: 8),
+                    Text('Log out'),
+                  ],
+                ),
+              ),
+            ],
 
           ),
         ],
