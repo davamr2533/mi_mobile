@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mi_mobile/main.dart';
+import 'package:mi_mobile/pages/get_kritik.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -106,12 +107,23 @@ class AdminPage extends StatelessWidget {
             _button(
               text: 'Kritik dan Saran',
               color: const Color(0xFF4C21A4),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GetKritikSaranPage(),
+                  ),
+                );
+              }
             ),
             const SizedBox(height: 21),
 
             _button(
               text: 'Survey Kepuasan',
               color: const Color(0xFF4C21A4),
+                onPressed: () {
+
+                }
             ),
           ],
         )
@@ -164,7 +176,11 @@ class AdminPage extends StatelessWidget {
     );
   }
 
-  Widget _button({required String text, required Color color}) {
+  Widget _button({
+    required String text,
+    required Color color,
+    required VoidCallback onPressed,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: ElevatedButton(
@@ -176,10 +192,14 @@ class AdminPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(26),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

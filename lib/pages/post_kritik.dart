@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mi_mobile/services/kritik_saran_services.dart';
 
-import 'package:mi_mobile/services/kritik_services.dart';
 
 class PostKritikPage extends StatefulWidget {
   const PostKritikPage({super.key});
@@ -268,7 +268,7 @@ class _PostKritikPageState extends State<PostKritikPage> {
     }
 
     try {
-      await KritikService.kirimKritik(
+      await KritikSaranService.kirimKritik(
         nama: namaController.text,
         nim: nimController.text,
         kritikSaran: kritikController.text,
