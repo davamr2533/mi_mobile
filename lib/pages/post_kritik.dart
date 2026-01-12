@@ -15,7 +15,14 @@ class _PostKritikPageState extends State<PostKritikPage> {
 
   final TextEditingController namaController = TextEditingController();
   final TextEditingController nimController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController kritikController = TextEditingController();
+  bool isValidEmail(String email) {
+    final emailRegex = RegExp(
+      r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
+    );
+    return emailRegex.hasMatch(email);
+  }
 
 
   @override
@@ -63,7 +70,7 @@ class _PostKritikPageState extends State<PostKritikPage> {
 
             Center(
               child: Transform.translate(
-                offset: const Offset(0, -8), // (x, y) → y minus = naik
+                offset: const Offset(0, -8),
                 child: SizedBox(
                   width: 280,
                   child: Divider(
@@ -123,6 +130,33 @@ class _PostKritikPageState extends State<PostKritikPage> {
                     controller: nimController,
                     decoration: InputDecoration(
                       hintText: 'Masukkan NIM anda',
+                      hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey),
+                      filled: true,
+                      fillColor: const Color(0xFFFFE8B3),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // ===== EMAIL =========================================
+                  const Text(
+                    'Email Amikom',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+
+                  const SizedBox(height: 6),
+
+                  TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      hintText: 'Masukkan Email Amikom anda',
                       hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey),
                       filled: true,
                       fillColor: const Color(0xFFFFE8B3),
@@ -251,6 +285,7 @@ class _PostKritikPageState extends State<PostKritikPage> {
     //Logic jika data belum lengkap tapi sudah dikirim
     if (namaController.text.trim().isEmpty ||
         nimController.text.trim().isEmpty ||
+        emailController.text.trim().isEmpty ||
         kritikController.text.trim().isEmpty) {
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -267,10 +302,25 @@ class _PostKritikPageState extends State<PostKritikPage> {
       return;
     }
 
+    // Validasi format email
+    if (!isValidEmail(emailController.text.trim())) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Format email tidak valid',
+            style: TextStyle(fontSize: 16),
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     try {
       await KritikSaranService.kirimKritik(
         nama: namaController.text,
         nim: nimController.text,
+        email: emailController.text.trim(),
         kritikSaran: kritikController.text,
       );
 
@@ -287,6 +337,7 @@ class _PostKritikPageState extends State<PostKritikPage> {
 
       namaController.clear();
       nimController.clear();
+      emailController.clear();
       kritikController.clear();
 
     } catch (e) {

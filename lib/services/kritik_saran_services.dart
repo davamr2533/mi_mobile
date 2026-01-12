@@ -9,6 +9,7 @@ class KritikSaranService {
   static Future<bool> kirimKritik({
     required String nama,
     required String nim,
+    required String email,
     required String kritikSaran,
   }) async {
     final url = Uri.parse('$baseUrl/post-kritik-dan-saran');
@@ -22,6 +23,7 @@ class KritikSaranService {
       body: jsonEncode({
         'nama': nama,
         'nim': nim,
+        'email': email,
         'kritik_saran': kritikSaran,
       }),
     );
