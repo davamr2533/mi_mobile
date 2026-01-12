@@ -1,35 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mi_mobile/pages/konsentrasi.dart';
-import 'package:mi_mobile/pages/login_page.dart';
-import 'package:mi_mobile/pages/profil_dosen.dart';
-import 'package:mi_mobile/pages/profil_prodi.dart';
-import 'package:mi_mobile/pages/visi_misi.dart';
+import 'package:mi_mobile/main.dart';
 
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'D3 Manajemen Informatika',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF6F3FF),
-      ),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AdminPage extends StatelessWidget {
+  const AdminPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -74,22 +49,21 @@ class HomePage extends StatelessWidget {
             onSelected: (value) {
               if (value == 'login') {
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Anda sudah login'),
+                    duration: Duration(seconds: 2),
                   ),
                 );
 
               } else if (value == 'logout') {
 
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Anda belum login'),
-                    duration: Duration(seconds: 2),
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
                   ),
                 );
-
 
               }
             },
@@ -99,9 +73,9 @@ class HomePage extends StatelessWidget {
                 value: 'login',
                 child: Row(
                   children: [
-                    Icon(Icons.login, size: 18),
+                    Icon(Icons.login, size: 18, color: Colors.grey),
                     SizedBox(width: 8),
-                    Text('Log in'),
+                    Text('Log in',style: TextStyle(color: Colors.grey)),
                   ],
                 ),
               ),
@@ -110,9 +84,9 @@ class HomePage extends StatelessWidget {
                 value: 'logout',
                 child: Row(
                   children: [
-                    Icon(Icons.logout, size: 18, color: Colors.grey),
+                    Icon(Icons.logout, size: 18),
                     SizedBox(width: 8),
-                    Text('Log out', style: TextStyle(color: Colors.grey)),
+                    Text('Log out'),
                   ],
                 ),
               ),
@@ -121,106 +95,28 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-
-
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
           children: [
-
             _header(),
-            const SizedBox(height: 30),
 
-            //Tombol baris pertama
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MenuButton(
-                  icon: Icons.track_changes,
-                  label: 'VISI MISI',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => VisiMisiPage()
-                        )
-                    );
-                  },
-                ),
-
-                SizedBox(width: 20),
-
-                MenuButton(
-                  icon: Icons.computer,
-                  label: 'KONSENTRASI',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => KonsentrasiPage()
-                        )
-                    );
-                  },
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 20),
-
-            //Tombol baris kedua
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MenuButton(
-                  icon: Icons.business,
-                  label: 'PROFIL PRODI',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfilProdiPage()
-                        )
-                    );
-                  },
-                ),
-
-                SizedBox(width: 20),
-
-                MenuButton(
-                  icon: Icons.people,
-                  label: 'PROFIL DOSEN',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfilDosenPage()
-                        )
-                    );
-                  },
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 60),
+            const SizedBox(height: 100),
 
             _button(
               text: 'Kritik dan Saran',
               color: const Color(0xFF4C21A4),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 21),
 
             _button(
               text: 'Survey Kepuasan',
               color: const Color(0xFF4C21A4),
             ),
-
-
-
           ],
-        ),
+        )
       ),
 
       bottomNavigationBar: _footer(),
-
     );
   }
 
@@ -240,9 +136,9 @@ class HomePage extends StatelessWidget {
           Text(
             'Congratulation!',
             style: GoogleFonts.roboto(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold
             ),
           ),
           const SizedBox(height: 8),
@@ -266,8 +162,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _button({required String text, required Color color}) {
     return Padding(
@@ -317,55 +211,5 @@ class HomePage extends StatelessWidget {
     );
   }
 
+
 }
-
-class MenuButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onPressed;
-
-  const MenuButton({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        elevation: 0,
-        minimumSize: const Size(155, 80),
-        maximumSize: const Size(155, 80),
-        backgroundColor: Colors.amber,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: 32,
-            color: const Color(0xFF330065),
-          ),
-          const SizedBox(height: 3),
-          Text(
-            label,
-            style: GoogleFonts.roboto(
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF330065),
-              fontSize: 15,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-
-
