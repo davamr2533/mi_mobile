@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mi_mobile/pages/konsentrasi.dart';
 import 'package:mi_mobile/pages/login_page.dart';
+import 'package:mi_mobile/pages/post_kritik.dart';
+import 'package:mi_mobile/pages/post_survey.dart';
 import 'package:mi_mobile/pages/profil_dosen.dart';
 import 'package:mi_mobile/pages/profil_prodi.dart';
 import 'package:mi_mobile/pages/visi_misi.dart';
@@ -34,6 +36,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF4EFFF),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF330065),
@@ -85,7 +88,7 @@ class HomePage extends StatelessWidget {
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Anda belum login'),
+                    content: Text('Anda belum login', style: TextStyle(fontSize: 16)),
                     duration: Duration(seconds: 2),
                   ),
                 );
@@ -205,13 +208,32 @@ class HomePage extends StatelessWidget {
             _button(
               text: 'Kritik dan Saran',
               color: const Color(0xFF4C21A4),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PostKritikPage(),
+                  ),
+                );
+              },
             ),
+
             const SizedBox(height: 12),
 
             _button(
               text: 'Survey Kepuasan',
               color: const Color(0xFF4C21A4),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PostSurveyPage(),
+                  ),
+                );
+              },
             ),
+
+
 
 
 
@@ -269,7 +291,11 @@ class HomePage extends StatelessWidget {
 
 
 
-  Widget _button({required String text, required Color color}) {
+  Widget _button({
+    required String text,
+    required Color color,
+    required VoidCallback onPressed,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: ElevatedButton(
@@ -281,14 +307,19 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(26),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
   }
+
 
   Widget _footer() {
     return Container(
