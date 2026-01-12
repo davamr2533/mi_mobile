@@ -69,6 +69,15 @@ flutter:
      - assets/images/1_alan.png
      - assets/images/2_farida.png
      - assets/images/3_dewi.png
+     - assets/images/4_dina.png
+     - assets/images/5_heri.png
+     - assets/images/6_jaeni.png
+     - assets/images/7_lukman.png
+     - assets/images/8_adin.png
+     - assets/images/9_melany.png
+     - assets/images/10_sri.png
+     - assets/images/11_upik.png
+     - assets/images/12_yuli.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -67,6 +67,62 @@ class ProfilDosenPage extends StatelessWidget {
               nidn: '190302xxx',
             ),
 
+            DosenCard(
+              imagePath: 'assets/images/4_dina.png',
+              nama: 'Dina Maulina, M.Kom',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/5_heri.png',
+              nama: 'Heri Sismoro, M.Kom',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/6_jaeni.png',
+              nama: 'Jaeni, S.Kom, M.Eng',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/7_lukman.png',
+              nama: 'Lukman, M.Kom',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/8_adin.png',
+              nama: 'M. Nuraminudin, M.Kom',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/9_melany.png',
+              nama: 'Melany Mustika Dewi, M.Kom',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/10_sri.png',
+              nama: 'Sri Ngudi Wahyuni, S.T.,M.Kom.',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/11_upik.png',
+              nama: 'Supriatin, M.Kom.',
+              nidn: '190302xxx',
+            ),
+
+            DosenCard(
+              imagePath: 'assets/images/12_yuli.png',
+              nama: 'Yuli Astuti, M.Kom',
+              nidn: '190302xxx',
+            ),
+
+
+
 
           ],
         ),
