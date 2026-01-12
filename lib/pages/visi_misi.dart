@@ -62,7 +62,7 @@ class VisiMisiPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
 
             _title('VISI'),
             const SizedBox(height: 8),
