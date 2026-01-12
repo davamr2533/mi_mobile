@@ -34,14 +34,30 @@ class VisiMisiPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
+            // ===== HEADER =====
             Center(
               child: Text(
                 "D3 Manajemen Informatika",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.roboto(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4C21A4)
+                  color: const Color(0xFF4C21A4),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 4),
+
+            Center(
+              child: Transform.translate(
+                offset: const Offset(0, -12),
+                child: SizedBox(
+                  width: 280,
+                  child: Divider(
+                    color: const Color(0xFFFCC740),
+                    thickness: 2,
+                  ),
                 ),
               ),
             ),

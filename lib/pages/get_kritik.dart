@@ -80,7 +80,7 @@ class _GetKritikSaranPageState extends State<GetKritikSaranPage> {
 
               Center(
                 child: Transform.translate(
-                  offset: const Offset(0, -8),
+                  offset: const Offset(0, -12),
                   child: SizedBox(
                     width: 280,
                     child: Divider(
