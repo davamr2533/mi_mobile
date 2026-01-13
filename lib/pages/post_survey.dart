@@ -56,10 +56,16 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
 
   String q1 = 'Sangat Baik';
   String q2 = 'Di atas 75%';
-  String q3 = 'Selalu';
-  String q4 = 'Sering Sekali';
-  String q5 = 'Ditanggapi dalam hitungan menit';
-  String q6 = 'Sangat Yakin';
+  String q3 = 'Di atas 75%';
+  String q4 = 'Di atas 75%';
+  String q5 = 'Di atas 75%';
+
+  String q6 = 'Sangat Baik';
+  String q7 = 'Selalu';
+  String q8 = 'Sering Sekali';
+  String q9 = 'Ditanggapi dalam hitungan menit';
+  String q10 = 'Sangat Yakin';
+  String q11 = 'Sangat Baik';
 
   @override
   Widget build(BuildContext context) {
@@ -136,27 +142,27 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
 
             _label('Ada berapa banyak dosen yang menyampaikan materi, tugas, dan ujian sesuai dengan RPS yang sudah diinfokan ?'),
             _dropdown(
-              value: q2,
+              value: q3,
               items: opsiPersentase,
-              onChanged: (value) => setState(() => q2 = value!),
+              onChanged: (value) => setState(() => q3 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Ada berapa banyak dosen yang menyediakan waktu untuk krosscheck nilai ?'),
             _dropdown(
-              value: q2,
+              value: q4,
               items: opsiPersentase,
-              onChanged: (value) => setState(() => q2 = value!),
+              onChanged: (value) => setState(() => q4 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Ada berapa banyak dosen yang menyediakan waktu atau forum untuk diskusi selama perkuliahan ?'),
             _dropdown(
-              value: q2,
+              value: q5,
               items: opsiPersentase,
-              onChanged: (value) => setState(() => q2 = value!),
+              onChanged: (value) => setState(() => q5 = value!),
             ),
 
             const SizedBox(height: 40),
@@ -182,54 +188,54 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
 
             _label('Bagaimana daya tanggap dan kemauan dosen, tenaga pendidik dan pimpinan prodi dalam membantu permasalahan mahasiswa?'),
             _dropdown(
-              value: q1,
+              value: q6,
               items: opsiKualitas,
-              onChanged: (value) => setState(() => q1 = value!),
+              onChanged: (value) => setState(() => q6 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Apakah dosen, tenaga pendidik dan pimpinan prodi selalu memberi perhatian dan peduli kepada mahasiswa?'),
             _dropdown(
-              value: q3,
+              value: q7,
               items: opsiFrekuensi,
-              onChanged: (value) => setState(() => q3 = value!),
+              onChanged: (value) => setState(() => q7 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Sebarapa sering dosen wali membuka sesi konseling atau menanyakan kabar anda ?'),
             _dropdown(
-              value: q4,
+              value: q8,
               items: opsiFrekuensiIntens,
-              onChanged: (value) => setState(() => q4 = value!),
+              onChanged: (value) => setState(() => q8 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Seberapa cepat pimpinan prodi dalam menanggapi email, chat, sms, atau pesan yang anda kirimkan melalui kontak resmi prodi'),
             _dropdown(
-              value: q5,
+              value: q9,
               items: opsiRespon,
-              onChanged: (value) => setState(() => q5 = value!),
+              onChanged: (value) => setState(() => q9 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Apakah anda merasa yakin bahwa pelayanan yang diberikan oleh prodi telah sesuai dengan ketentuan yang berlaku?'),
             _dropdown(
-              value: q6,
+              value: q10,
               items: opsiKeyakinan,
-              onChanged: (value) => setState(() => q6 = value!),
+              onChanged: (value) => setState(() => q10 = value!),
             ),
 
             const SizedBox(height: 40),
 
             _label('Bagaimana pendapat anda mengenai kecukupan, aksesibitas, serta kualitas sarana dan prasarana yang disediakan oleh prodi?'),
             _dropdown(
-              value: q1,
+              value: q11,
               items: opsiKualitas,
-              onChanged: (value) => setState(() => q1 = value!),
+              onChanged: (value) => setState(() => q11 = value!),
             ),
 
             const SizedBox(height: 40),
