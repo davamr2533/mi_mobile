@@ -55,7 +55,7 @@ class SurveyCard extends StatelessWidget {
           // ===== HEADER =====
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
             child: Row(
               children: [
                 Text(
@@ -67,7 +67,7 @@ class SurveyCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'NIM $nim',
+                  'NIM : $nim',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -78,12 +78,12 @@ class SurveyCard extends StatelessWidget {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(left: 10, bottom: 6),
+            padding: const EdgeInsets.only(left: 10,bottom: 6, top: 6),
             child: Text(
               'Semester $semester',
               style: const TextStyle(
                 fontStyle: FontStyle.italic,
-                fontSize: 13,
+                fontSize: 14,
               ),
             ),
           ),
@@ -91,44 +91,51 @@ class SurveyCard extends StatelessWidget {
           const Divider(color: Colors.black54),
 
           // ===== RINGKASAN =====
+
+
+
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 6,
-              children: [
-                _chip('Pelayanan', q1),
-                _chip('Respon Prodi', q9),
-                _chip('Keyakinan', q10),
-              ],
-            ),
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: _chip('Kemampuan Dosen', q1),
           ),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: _chip('Respon Prodi', q9),
+          ),
+
 
           const SizedBox(height: 6),
 
           // ===== DETAIL =====
-          ExpansionTile(
-            tilePadding: const EdgeInsets.symmetric(horizontal: 10),
-            title: const Text(
-              'Detail Jawaban',
-              style: TextStyle(fontWeight: FontWeight.bold),
+          Theme(
+            data: Theme.of(context).copyWith(
+              dividerColor: Colors.transparent,
             ),
-            childrenPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            children: [
-              _item('Kemampuan Dosen', q1),
-              _item('RPS di Awal', q2),
-              _item('Materi sesuai RPS', q3),
-              _item('Kroscek Nilai', q4),
-              _item('Forum Diskusi', q5),
-              _item('Daya Tanggap', q6),
-              _item('Sesquipedalian', q7),
-              _item('Konseling Dosen Wali', q8),
-              _item('Respon Prodi', q9),
-              _item('Keyakinan Pelayanan', q10),
-              _item('Sarana & Prasarana', q11),
-            ],
+            child: ExpansionTile(
+              tilePadding: const EdgeInsets.symmetric(horizontal: 10),
+              title: const Text(
+                'Detail Jawaban',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              childrenPadding:
+              const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              children: [
+                _item('Kemampuan Dosen', q1),
+                _item('RPS di Awal', q2),
+                _item('Materi sesuai RPS', q3),
+                _item('Kroscek Nilai', q4),
+                _item('Forum Diskusi', q5),
+                _item('Daya Tanggap', q6),
+                _item('Kepedulian Prodi', q7),
+                _item('Konseling Dosen Wali', q8),
+                _item('Respon Prodi', q9),
+                _item('Keyakinan Pelayanan', q10),
+                _item('Sarana & Prasarana', q11),
+              ],
+            ),
           ),
+
 
           const Divider(color: Colors.black45),
 
