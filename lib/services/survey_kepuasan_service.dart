@@ -1,9 +1,35 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mi_mobile/models/survey_kepuasan_model.dart';
+import 'dart:io';
+
+class ApiConfig {
+
+  static const String pcIp = '192.168.1.2';
+
+  static String get baseUrl {
+    if (Platform.isAndroid) {
+      // Emulator Android
+      if (_isAndroidEmulator) {
+        return 'http://10.0.2.2:8000/api';
+      }
+      // Android asli
+      return 'http://$pcIp:8000/api';
+    }
+
+    // iOS / Web / Desktop
+    return 'http://localhost:8000/api';
+  }
+
+  static bool get _isAndroidEmulator {
+    return Platform.environment.containsKey('ANDROID_EMULATOR') ||
+        Platform.environment.containsKey('ANDROID_AVD_HOME');
+  }
+}
+
 
 class SurveyKepuasanService {
-  static const String baseUrl = 'http://10.0.2.2:8000/api';
+  static final String baseUrl = ApiConfig.baseUrl;
 
   //Service untuk post survey kepuasan ke database
   static Future<void> kirimSurvey({

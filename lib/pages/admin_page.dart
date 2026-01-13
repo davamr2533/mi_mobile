@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mi_mobile/main.dart';
 import 'package:mi_mobile/pages/get_kritik.dart';
 import 'package:mi_mobile/pages/get_survey.dart';
+import 'package:mi_mobile/pop_up/login_success.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -61,12 +62,18 @@ class AdminPage extends StatelessWidget {
 
               } else if (value == 'logout') {
 
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => const LogOutSuccess(),
                 );
+
+                Future.delayed(const Duration(seconds: 3), () {
+                  if (context.mounted) {
+                    Navigator.pop(context); // tutup popup
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomePage()));
+                  }
+                });
 
               }
             },

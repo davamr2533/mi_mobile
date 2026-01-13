@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mi_mobile/models/kritik_saran_model.dart';
 
 class KritikSaranService {
-  static const String baseUrl = 'http://10.0.2.2:8000/api';
+  static const String baseUrl = 'http://192.168.1.2:8000/api';
 
   //Service untuk post kritik dan saran ke database
   static Future<bool> kirimKritik({

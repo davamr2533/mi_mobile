@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mi_mobile/pages/admin_page.dart';
+import 'package:mi_mobile/pop_up/login_success.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -123,12 +124,20 @@ class _LoginPageState extends State<LoginPage> {
                         String password = passwordController.text.trim();
 
                         if (username == 'admin' && password == 'admin') {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AdminPage(),
-                            ),
+
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) => const LoginSuccess(),
                           );
+
+                          Future.delayed(const Duration(seconds: 3), () {
+                            if (context.mounted) {
+                              Navigator.pop(context); // tutup popup
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AdminPage()));
+                            }
+                          });
+
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
