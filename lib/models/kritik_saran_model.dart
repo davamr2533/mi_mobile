@@ -2,6 +2,7 @@ class KritikSaran {
   final int id;
   final String nama;
   final String nim;
+  final String email;
   final String kritikSaran;
   final DateTime createdAt;
 
@@ -9,6 +10,7 @@ class KritikSaran {
     required this.id,
     required this.nama,
     required this.nim,
+    required this.email,
     required this.kritikSaran,
     required this.createdAt,
   });
@@ -18,6 +20,7 @@ class KritikSaran {
       id: json['id'],
       nama: json['nama'],
       nim: json['nim'],
+      email: json['email'],
       kritikSaran: json['kritik_saran'],
       createdAt: DateTime.parse(json['created_at']),
     );

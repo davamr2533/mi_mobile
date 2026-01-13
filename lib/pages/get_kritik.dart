@@ -108,6 +108,7 @@ class _GetKritikSaranPageState extends State<GetKritikSaranPage> {
                 nama: item.nama,
                 isi: item.kritikSaran,
                 nim: item.nim,
+                email: item.email
               )),
             ],
           );
@@ -121,7 +122,7 @@ class _GetKritikSaranPageState extends State<GetKritikSaranPage> {
     );
   }
 
-  Widget kritikCard({required String nama, required String nim, required String isi}) {
+  Widget kritikCard({required String nama, required String nim, required String email, required String isi}) {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
@@ -160,11 +161,25 @@ class _GetKritikSaranPageState extends State<GetKritikSaranPage> {
           Divider(color: Colors.black54),
 
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 16),
-            child: Text(
-              isi,
-              style: const TextStyle(fontSize: 14),
-            ),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  isi,
+                  style: const TextStyle(fontSize: 14),
+                ),
+
+                SizedBox(height: 22),
+                
+                Text(email, textAlign: TextAlign.start,)
+              ]
+              
+              
+              
+            )
+            
+            
           ),
         ],
       ),
