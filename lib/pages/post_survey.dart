@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mi_mobile/services/survey_kepuasan_service.dart';
 
 class PostSurveyPage extends StatefulWidget {
   const PostSurveyPage({super.key});
@@ -10,6 +11,13 @@ class PostSurveyPage extends StatefulWidget {
 }
 
 class _PostSurveyPageState extends State<PostSurveyPage> {
+
+  final TextEditingController namaController = TextEditingController();
+  final TextEditingController nimController = TextEditingController();
+  final TextEditingController semesterController = TextEditingController();
+  final TextEditingController mkController = TextEditingController();
+  final TextEditingController saranController = TextEditingController();
+
 
   final List<String> opsiKualitas = [
     'Sangat Baik',
@@ -122,6 +130,62 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
 
             const SizedBox(height: 24),
 
+            SizedBox(
+              height: 50,
+              child: TextField(
+                controller: namaController,
+                decoration: InputDecoration(
+                  hintText: 'Masukkan Nama',
+                  filled: true,
+                  fillColor: const Color(0xFFFFE8B3),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+
+            SizedBox(height: 8),
+
+            SizedBox(
+              height: 50,
+              child: TextField(
+                controller: nimController,
+                decoration: InputDecoration(
+                  hintText: 'Masukkan NIM',
+                  filled: true,
+                  fillColor: const Color(0xFFFFE8B3),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+
+            SizedBox(height: 8),
+
+            SizedBox(
+              height: 50,
+              child: TextField(
+                controller: semesterController,
+                decoration: InputDecoration(
+                  hintText: 'Masukkan Semester',
+                  filled: true,
+                  fillColor: const Color(0xFFFFE8B3),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            const SizedBox(height: 32),
+
             _label('Bagaimana kemampuan / kehandalan dosen, tenaga pendidik dan pimpinan prodi dalam melayani mahasiswa ?'),
             _dropdown(
               value: q1,
@@ -172,6 +236,7 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
             const SizedBox(height: 6),
 
             TextField(
+              controller: mkController,
               maxLines: 4,
               decoration: InputDecoration(
                 hintText: 'Tuliskan mata kuliah',
@@ -245,6 +310,7 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
             const SizedBox(height: 8),
 
             TextField(
+              controller: saranController,
               maxLines: 5,
               decoration: InputDecoration(
                 hintText: 'Tuliskan saran',
@@ -257,22 +323,13 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
               ),
             ),
 
-
-
-
-
             const SizedBox(height: 60),
 
             _button(
               text: 'Kirim',
               color: const Color(0xFF4C21A4),
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Survey berhasil dikirim'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
+                kirimSurvey();
               },
             ),
           ],
@@ -374,4 +431,78 @@ class _PostSurveyPageState extends State<PostSurveyPage> {
       ),
     );
   }
+
+  Future<void> kirimSurvey() async {
+
+    // Validasi field wajib
+    if (namaController.text.trim().isEmpty ||
+        nimController.text.trim().isEmpty ||
+        semesterController.text.trim().isEmpty ||
+        mkController.text.trim().isEmpty ||
+        saranController.text.trim().isEmpty) {
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Lengkapi semua data terlebih dahulu',
+            style: TextStyle(fontSize: 16),
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    try {
+      await SurveyKepuasanService.kirimSurvey(
+        nama: namaController.text.trim(),
+        nim: nimController.text.trim(),
+        semester: semesterController.text.trim(),
+        q1: q1,
+        q2: q2,
+        q3: q3,
+        q4: q4,
+        q5: q5,
+        q6: q6,
+        q7: q7,
+        q8: q8,
+        q9: q9,
+        q10: q10,
+        q11: q11,
+        mkTidakMaksimal: mkController.text.trim(),
+        saran: saranController.text.trim(),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Survey kepuasan berhasil dikirim',
+            style: TextStyle(fontSize: 16),
+          ),
+          backgroundColor: Colors.indigo,
+        ),
+      );
+
+      // Reset form
+      namaController.clear();
+      nimController.clear();
+      semesterController.clear();
+      mkController.clear();
+      saranController.clear();
+
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Gagal mengirim survey kepuasan',
+            style: TextStyle(fontSize: 16),
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+
+
 }

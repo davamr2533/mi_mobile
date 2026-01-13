@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mi_mobile/main.dart';
 import 'package:mi_mobile/pages/get_kritik.dart';
+import 'package:mi_mobile/pages/get_survey.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -122,7 +123,12 @@ class AdminPage extends StatelessWidget {
               text: 'Survey Kepuasan',
               color: const Color(0xFF4C21A4),
                 onPressed: () {
-
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GetSurveyKepuasanPage(),
+                    ),
+                  );
                 }
             ),
           ],
